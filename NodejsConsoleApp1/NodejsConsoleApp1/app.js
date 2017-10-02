@@ -12,7 +12,7 @@ var testuser1 = 'E0B725E1-8AE0-4902-3511-87CD679C440D';
 var testuser2 = 'C1C63838-729E-7B69-E9BD-B73A94B746A9';
 var filepath = 'userfile.txt';
 //selectUserFromDatabase('Colon');
-writeUserToFile(filepath, testuser1);
+writeUserToFile(filepath, testuser2);
 
 
 //moveUserToFile(filepath, testuser);
@@ -50,7 +50,7 @@ function writeUserToFile(filepath, userID) {
     setTimeout(function () {
         console.log("Hello");
         console.log("User isn't in file: " + userIsNotInFile);
-        if (userIsNotInFile == false) {
+        if (userIsNotInFile == true) {
             console.log(data);
             fs.appendFile(filepath, data, function (err) {
                 if (err) throw err;
@@ -69,22 +69,22 @@ function writeUserToFile(filepath, userID) {
 //}
 
 function checkFileForUser(filepath, userID) {
-    if (fs.existsSync(filepath)) {
+    if (fs.exists(filepath)) {
         fs.readFile(filepath, function (err, data) {
             if (err) {
                 console.log("ERROR");
                 return false;
-            } else if (userExists = data.indexOf(userID) > 0) {
-                console.log(userExists);
-                console.log("The user already exists!");
-                return true;
-                console.log("But somehow I get here");
             }
+
+            userExists = (data.indexOf(userID) > 0);
+            console.log("The user already exists: " + userExists);
+            return userExists
+            console.log("But somehow I get here");
         })
-    } else {
-        console.log("File does not exist");
-        return false;
     }
+
+        console.log("File does not exist");
+        return true;
 }
 
 function deleteUserFromDatabase(userID) {

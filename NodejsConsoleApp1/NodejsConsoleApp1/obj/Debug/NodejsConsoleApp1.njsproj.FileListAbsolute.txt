@@ -1,0 +1,3 @@
+C:\Users\SorenM\Documents\GitHub\interview-assignment\NodejsConsoleApp1\NodejsConsoleApp1\obj\Debug\NodejsConsoleApp1.njsprojResolveAssemblyReference.cache
+C:\Users\SorenM\Documents\GitHub\interview-assignment\NodejsConsoleApp1\NodejsConsoleApp1\obj\Debug\NodejsConsoleApp1.njsproj.CoreCompileInputs.cache
+C:\Users\SorenM\Documents\GitHub\interview-assignment\NodejsConsoleApp1\NodejsConsoleApp1\bin\Microsoft.NodejsTools.WebRole.dll
