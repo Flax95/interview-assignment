@@ -45,12 +45,11 @@ function selectUserFromDatabase(userID) {
 
 function writeUserToFile(filepath, userID) {
     data = selectUserFromDatabase(userID);
-    userIsNotInFile = checkFileForUser(filepath, userID);
-    console.log("User isn't in file before setTimeout: " + userIsNotInFile);
+    UserExistInFile = checkFileForUser(filepath, userID);
+    console.log("User isn't in file before setTimeout: " + UserExistInFile);
     setTimeout(function () {
-        console.log("Hello");
-        console.log("User isn't in file: " + userIsNotInFile);
-        if (userIsNotInFile == true) {
+        console.log("User is in file: " + UserExistInFile);
+        if (UserExistInFile == false) {
             console.log(data);
             fs.appendFile(filepath, data, function (err) {
                 if (err) throw err;
@@ -73,18 +72,20 @@ function checkFileForUser(filepath, userID) {
         fs.readFile(filepath, function (err, data) {
             if (err) {
                 console.log("ERROR");
-                return false;
+                return true;
             }
 
-            userExists = (data.indexOf(userID) > 0);
-            console.log("The user already exists: " + userExists);
-            return userExists
-            console.log("But somehow I get here");
+            userExists = (data.indexOf(userID) >= 0);
+            setTimeout(function () {            //Remove setTimeout if possible
+                console.log("The user already exists: " + userExists);
+                return userExists
+                console.log("But somehow I get here");
+            }, 2000)
         })
     }
 
         console.log("File does not exist");
-        return true;
+        return false;
 }
 
 function deleteUserFromDatabase(userID) {
@@ -98,7 +99,6 @@ function deleteUserFromDatabase(userID) {
 }
 
 function moveUserToFile(filepath, userID) {
-    if (!checkFileForUser(filepath, userID)) {
         writeUserToFile(filepath, userID)
 
         if (checkFileForUser(filepath, userID)) {
@@ -106,8 +106,4 @@ function moveUserToFile(filepath, userID) {
         } else {
             console.log("Error writing user to file");
         }
-    } else {
-        console.log("User already exists in file");
-    }
-    
 }
