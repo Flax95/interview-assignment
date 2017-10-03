@@ -1,7 +1,7 @@
 create database if not exists userDatabase;
 use userDatabase;
 
-drop table if exists users
+drop table if exists users;
 
 CREATE TABLE users (
   id varchar(36) NOT NULL,
