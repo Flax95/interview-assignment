@@ -16,7 +16,10 @@ var con = mysql.createConnection({
     database: "userdatabase"
 });
 
+
 moveUserToFile(filepath, testuser1);
+
+
 
 //Returns user as JSON string
 function selectUserFromDatabase(userID) {
