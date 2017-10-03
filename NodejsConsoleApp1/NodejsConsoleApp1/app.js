@@ -17,7 +17,7 @@ var con = mysql.createConnection({
 });
 
 
-moveUserToFile(filepath, testuser1);
+moveUserToFile(filepath, testuser2);
 
 
 
